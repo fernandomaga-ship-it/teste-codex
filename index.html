@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Acompanhe o estoque da casa e encontre o melhor momento para comprar." />
+    <title>Meu Estoque — Lista de compras inteligente</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#" aria-label="Meu Estoque, início">
+          <span class="brand-mark" aria-hidden="true">⌂</span>
+          <span>meu<span>estoque</span></span>
+        </a>
+
+        <nav class="nav" aria-label="Navegação principal">
+          <p class="nav-label">Menu</p>
+          <a class="nav-item active" href="#inicio"><span>⌂</span> Visão geral</a>
+          <a class="nav-item" href="#compras"><span>✓</span> Lista de compras <b id="navCount">4</b></a>
+          <a class="nav-item" href="#estoque"><span>□</span> Meu estoque</a>
+          <a class="nav-item" href="#alertas"><span>♢</span> Alertas de preço</a>
+          <p class="nav-label space">Inteligência</p>
+          <a class="nav-item" href="#historico"><span>↗</span> Histórico</a>
+          <a class="nav-item" href="#fontes"><span>⌁</span> Fontes conectadas</a>
+        </nav>
+
+        <div class="side-tip">
+          <span class="spark">✦</span>
+          <strong>Economize mais</strong>
+          <p>Ative alertas e compre seus básicos na hora certa.</p>
+          <a href="#alertas">Ver alertas <span>→</span></a>
+        </div>
+
+        <div class="profile">
+          <div class="avatar">MA</div>
+          <div><strong>Marina Alves</strong><span>Casa principal</span></div>
+          <button aria-label="Abrir opções">•••</button>
+        </div>
+      </aside>
+
+      <main>
+        <header class="topbar">
+          <button class="mobile-menu" aria-label="Abrir menu">☰</button>
+          <div class="search"><span>⌕</span><input id="search" type="search" placeholder="Buscar produto..." aria-label="Buscar produto" /><kbd>⌘ K</kbd></div>
+          <div class="top-actions">
+            <button class="sync-button" id="syncButton"><span>↻</span> Sincronizar</button>
+            <button class="icon-button" aria-label="Notificações">♢<i></i></button>
+          </div>
+        </header>
+
+        <div class="content" id="inicio">
+          <section class="welcome">
+            <div>
+              <p class="eyebrow">DOMINGO, 13 DE SETEMBRO</p>
+              <h1>Bom dia, Marina! <span>👋</span></h1>
+              <p>Seu estoque está em dia. Encontramos <strong>3 boas oportunidades</strong> para você.</p>
+            </div>
+            <button class="primary" id="addButton"><span>＋</span> Adicionar produto</button>
+          </section>
+
+          <section class="stats" aria-label="Resumo do estoque">
+            <article class="stat-card accent-orange"><div class="stat-icon">▤</div><div><span>Itens no estoque</span><strong id="stockTotal">24</strong><small><b>↑ 3</b> este mês</small></div></article>
+            <article class="stat-card accent-red"><div class="stat-icon">!</div><div><span>Precisam de reposição</span><strong id="replacementTotal">4</strong><small>2 com urgência</small></div></article>
+            <article class="stat-card accent-green"><div class="stat-icon">↓</div><div><span>Economia estimada</span><strong>R$ 87<sup>,40</sup></strong><small><b>↑ 12%</b> este mês</small></div></article>
+            <article class="stat-card accent-blue"><div class="stat-icon">⌁</div><div><span>Fontes conectadas</span><strong>2</strong><small><i></i> Tudo sincronizado</small></div></article>
+          </section>
+
+          <section class="opportunity-card" id="alertas">
+            <div class="opportunity-copy">
+              <span class="tag">✦ OPORTUNIDADE DO DIA</span>
+              <h2>Seu café favorito está <em>18% mais barato</em></h2>
+              <p>Café Orfeu Clássico 500g atingiu o menor preço dos últimos 60 dias.</p>
+              <div class="price-line"><strong>R$ 27,90</strong><s>R$ 33,90</s><span>Economize R$ 6,00</span></div>
+              <button class="dark-button" id="offerButton">Ver oferta <span>↗</span></button>
+            </div>
+            <div class="product-art" aria-label="Embalagem ilustrada de Café Orfeu">
+              <span class="leaf leaf-one">◆</span><span class="leaf leaf-two">◆</span>
+              <div class="coffee-pack"><small>CAFÉS<br />ESPECIAIS</small><b>ORFEU</b><span>CLÁSSICO</span><i>500g</i></div>
+              <span class="discount">−18%</span>
+            </div>
+          </section>
+
+          <section class="shopping" id="compras">
+            <div class="section-heading">
+              <div><h2>Lista de compras</h2><p>Baseada no seu consumo e histórico de pedidos</p></div>
+              <button class="text-button" id="viewAll">Ver lista completa <span>→</span></button>
+            </div>
+            <div class="filter-row">
+              <div class="tabs" role="tablist">
+                <button class="tab active" data-filter="all">Todos <b id="allCount">4</b></button>
+                <button class="tab" data-filter="urgent">Urgentes <b>2</b></button>
+                <button class="tab" data-filter="soon">Em breve <b>2</b></button>
+              </div>
+              <span class="updated">↻ Atualizado há 2 min</span>
+            </div>
+            <div class="product-list" id="productList"></div>
+          </section>
+
+          <section class="insight" id="historico">
+            <div class="insight-icon">✦</div>
+            <div><span>INSIGHT DO SEU CONSUMO</span><p>Você costuma comprar itens de limpeza a cada <strong>32 dias.</strong> A próxima reposição será por volta de <strong>25 de setembro.</strong></p></div>
+            <button aria-label="Fechar insight">×</button>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <dialog id="addDialog">
+      <form method="dialog" id="addForm">
+        <div class="dialog-head"><div><span>NOVO ITEM</span><h2>Adicionar produto</h2></div><button value="cancel" aria-label="Fechar">×</button></div>
+        <label>Nome do produto<input name="name" required placeholder="Ex.: Sabão em pó" /></label>
+        <div class="form-grid"><label>Categoria<select name="category"><option>Mercearia</option><option>Limpeza</option><option>Cuidados pessoais</option><option>Pets</option></select></label><label>Preço médio<input name="price" inputmode="decimal" placeholder="0,00" /></label></div>
+        <button class="primary submit" value="default">Adicionar à lista</button>
+      </form>
+    </dialog>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
